@@ -1,9 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -11,14 +9,17 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JButton;
-import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
+import presenter.Presenter;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
 
 public class PantallaIngresarPersonas {
 
 	private JFrame frmIngresarPersonasY;
-	private JTextField textField;
 	private JTextField textField_1;
+	private Presenter presenter;
 
 	/**
 	 * Launch the application.
@@ -41,6 +42,7 @@ public class PantallaIngresarPersonas {
 	 */
 	public PantallaIngresarPersonas() {
 		initialize();
+		presenter = new Presenter();
 	}
 
 	/**
@@ -48,6 +50,7 @@ public class PantallaIngresarPersonas {
 	 */
 	private void initialize() {
 		frmIngresarPersonasY = new JFrame();
+		frmIngresarPersonasY.setIconImage(Toolkit.getDefaultToolkit().getImage(PantallaIngresarPersonas.class.getResource("/org/eclipse/jface/fieldassist/images/contassist_ovr.png")));
 		frmIngresarPersonasY.setTitle("Ingresar personas y sus interes");
 		frmIngresarPersonasY.setBounds(100, 100, 600, 400);
 		frmIngresarPersonasY.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,10 +67,10 @@ public class PantallaIngresarPersonas {
 		lblNewLabel.setBounds(57, 116, 162, 22);
 		frmIngresarPersonasY.getContentPane().add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(337, 116, 189, 22);
-		frmIngresarPersonasY.getContentPane().add(textField);
-		textField.setColumns(10);
+		JTextField txtNombre = new JTextField();
+		txtNombre.setBounds(337, 116, 189, 22);
+		frmIngresarPersonasY.getContentPane().add(txtNombre);
+		txtNombre.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Ingrese los valores de interés que tiene la persona:");
 		lblNewLabel_1.setBounds(57, 149, 259, 22);
@@ -89,31 +92,37 @@ public class PantallaIngresarPersonas {
 		lblNewLabel_2_1_2.setBounds(82, 257, 78, 14);
 		frmIngresarPersonasY.getContentPane().add(lblNewLabel_2_1_2);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		spinner.setBounds(288, 179, 41, 20);
-		frmIngresarPersonasY.getContentPane().add(spinner);
+		JSpinner iDeportes = new JSpinner();
+		iDeportes.setModel(new SpinnerNumberModel(1, 1, 5, 1));
+		iDeportes.setBounds(288, 179, 41, 20);
+		frmIngresarPersonasY.getContentPane().add(iDeportes);
 		
-		JSpinner spinner_1 = new JSpinner();
-		spinner_1.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		spinner_1.setBounds(288, 204, 41, 20);
-		frmIngresarPersonasY.getContentPane().add(spinner_1);
+		JSpinner iEspectaculo = new JSpinner();
+		iEspectaculo.setModel(new SpinnerNumberModel(1, 1, 5, 1));
+		iEspectaculo.setBounds(288, 204, 41, 20);
+		frmIngresarPersonasY.getContentPane().add(iEspectaculo);
 		
-		JSpinner spinner_2 = new JSpinner();
-		spinner_2.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		spinner_2.setBounds(288, 229, 41, 20);
-		frmIngresarPersonasY.getContentPane().add(spinner_2);
+		JSpinner iMusica = new JSpinner();
+		iMusica.setModel(new SpinnerNumberModel(1, 1, 5, 1));
+		iMusica.setBounds(288, 229, 41, 20);
+		frmIngresarPersonasY.getContentPane().add(iMusica);
 		
-		JSpinner spinner_3 = new JSpinner();
-		spinner_3.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		spinner_3.setBounds(288, 254, 41, 20);
-		frmIngresarPersonasY.getContentPane().add(spinner_3);
+		JSpinner iCiencia = new JSpinner();
+		iCiencia.setModel(new SpinnerNumberModel(1, 1, 5, 1));
+		iCiencia.setBounds(288, 254, 41, 20);
+		frmIngresarPersonasY.getContentPane().add(iCiencia);
 		
 		JButton btnNewButton = new JButton("Iniciar agrupamiento");
 		btnNewButton.setBounds(403, 302, 143, 39);
 		frmIngresarPersonasY.getContentPane().add(btnNewButton);
 		
 		JButton btnRegistrarPersona = new JButton("Registrar persona");
+		btnRegistrarPersona.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				presenter.registrarPersona(txtNombre.getText(), (int) iDeportes.getValue(), (int) iMusica.getValue(), (int) iEspectaculo.getValue(), (int) iCiencia.getValue());
+			}
+		});
 		btnRegistrarPersona.setBounds(403, 195, 143, 39);
 		frmIngresarPersonasY.getContentPane().add(btnRegistrarPersona);
 		
