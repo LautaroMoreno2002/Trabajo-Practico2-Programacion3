@@ -1,17 +1,34 @@
 package model;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Principal {
-	HashMap<String, int[]> personas;
+	private List<Persona> personas;
+	private Grafo grafo;
 	
 	public Principal() {
-		personas = new HashMap<>();
+		personas = new ArrayList<Persona>();
+		grafo = new Grafo(0);
 	}
 	
-	public void registrarPersona(String nombre, int[] preferencias) {
-//		if(personaRegistrada(nombre))
-		personas.put(nombre, preferencias);	
-		System.out.println(personas.toString());
+	public void registrarPersona(String nombre, int iDeportes, int iMusica, int iEspectaculo, int iCiencia) {
+		Persona persona = new Persona(nombre, iDeportes, iMusica, iEspectaculo, iCiencia);
+		personas.add(persona);
+		grafo.agregarVertice();
+//		System.out.println(personas.get(0).toString());
 	}
+	
+	public void grafoCompleto() {
+		for(int i = 0; i < personas.size(); i++) {
+			for(int j = 0; j < personas.size(); j++) {
+				grafo.agregarArista(i, j, personas.get(i).calcularSimilitud(personas.get(j)));
+			}
+		}
+		grafo.imprimirMatriz();
+		grafo.imprimirVecinos();
+	}
+	
+	
 }

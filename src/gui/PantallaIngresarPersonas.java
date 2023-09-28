@@ -13,12 +13,12 @@ import javax.swing.SwingConstants;
 import presenter.Presenter;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.Toolkit;
 
 public class PantallaIngresarPersonas {
 
 	private JFrame frmIngresarPersonasY;
-	private JTextField textField_1;
+	private JTextField contPersonasRegistradas;
+	private int personasRegistradas;
 	private Presenter presenter;
 
 	/**
@@ -43,6 +43,7 @@ public class PantallaIngresarPersonas {
 	public PantallaIngresarPersonas() {
 		initialize();
 		presenter = new Presenter();
+		personasRegistradas = 0;
 	}
 
 	/**
@@ -50,47 +51,47 @@ public class PantallaIngresarPersonas {
 	 */
 	private void initialize() {
 		frmIngresarPersonasY = new JFrame();
-		frmIngresarPersonasY.setIconImage(Toolkit.getDefaultToolkit().getImage(PantallaIngresarPersonas.class.getResource("/org/eclipse/jface/fieldassist/images/contassist_ovr.png")));
+//		frmIngresarPersonasY.setIconImage(Toolkit.getDefaultToolkit().getImage(PantallaIngresarPersonas.class.getResource("/org/eclipse/jface/fieldassist/images/contassist_ovr.png")));
 		frmIngresarPersonasY.setTitle("Ingresar personas y sus interes");
 		frmIngresarPersonasY.setBounds(100, 100, 600, 400);
 		frmIngresarPersonasY.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmIngresarPersonasY.getContentPane().setLayout(null);
 		
-		JTextPane txtpnBienvenidoEnEste = new JTextPane();
-		txtpnBienvenidoEnEste.setFont(new Font("JetBrains Mono", Font.PLAIN, 12));
-		txtpnBienvenidoEnEste.setEditable(false);
-		txtpnBienvenidoEnEste.setText("Bienvenido, en este programa se pedirá que ingrese una persona con su nombre y sus respectivos valores de interés sobre deportes, la música, noticias de espectáculo y la ciencia. Considerando un rango que va del 1 al 5, siendo 1 el interés más bajo y 5 el interés máximo posible.\r\n\r\n");
-		txtpnBienvenidoEnEste.setBounds(10, 11, 564, 73);
-		frmIngresarPersonasY.getContentPane().add(txtpnBienvenidoEnEste);
+		JTextPane txtBienvenidoEnEste = new JTextPane();
+		txtBienvenidoEnEste.setFont(new Font("JetBrains Mono", Font.PLAIN, 12));
+		txtBienvenidoEnEste.setEditable(false);
+		txtBienvenidoEnEste.setText("Bienvenido, en este programa se pedirá que ingrese una persona con su nombre y sus respectivos valores de interés sobre deportes, la música, noticias de espectáculo y la ciencia. Considerando un rango que va del 1 al 5, siendo 1 el interés más bajo y 5 el interés máximo posible.\r\n\r\n");
+		txtBienvenidoEnEste.setBounds(10, 11, 564, 73);
+		frmIngresarPersonasY.getContentPane().add(txtBienvenidoEnEste);
 		
-		JLabel lblNewLabel = new JLabel("Ingrese el nombre de la persona: \r\n");
-		lblNewLabel.setBounds(57, 116, 162, 22);
-		frmIngresarPersonasY.getContentPane().add(lblNewLabel);
+		JLabel etIngresarNombre = new JLabel("Ingrese el nombre de la persona: \r\n");
+		etIngresarNombre.setBounds(57, 116, 162, 22);
+		frmIngresarPersonasY.getContentPane().add(etIngresarNombre);
 		
-		JTextField txtNombre = new JTextField();
-		txtNombre.setBounds(337, 116, 189, 22);
-		frmIngresarPersonasY.getContentPane().add(txtNombre);
-		txtNombre.setColumns(10);
+		JTextField inputNombre = new JTextField();
+		inputNombre.setBounds(337, 116, 189, 22);
+		frmIngresarPersonasY.getContentPane().add(inputNombre);
+		inputNombre.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Ingrese los valores de interés que tiene la persona:");
-		lblNewLabel_1.setBounds(57, 149, 259, 22);
-		frmIngresarPersonasY.getContentPane().add(lblNewLabel_1);
+		JLabel etIngresarValores = new JLabel("Ingrese los valores de interés que tiene la persona:");
+		etIngresarValores.setBounds(57, 149, 259, 22);
+		frmIngresarPersonasY.getContentPane().add(etIngresarValores);
 		
-		JLabel lblNewLabel_2 = new JLabel("Música:");
-		lblNewLabel_2.setBounds(82, 232, 78, 14);
-		frmIngresarPersonasY.getContentPane().add(lblNewLabel_2);
+		JLabel etIMusica = new JLabel("Música:");
+		etIMusica.setBounds(82, 232, 78, 14);
+		frmIngresarPersonasY.getContentPane().add(etIMusica);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Noticias de espectáculo: ");
-		lblNewLabel_2_1.setBounds(82, 207, 119, 14);
-		frmIngresarPersonasY.getContentPane().add(lblNewLabel_2_1);
+		JLabel etINoticiasEspectaculo = new JLabel("Noticias de espectáculo: ");
+		etINoticiasEspectaculo.setBounds(82, 207, 119, 14);
+		frmIngresarPersonasY.getContentPane().add(etINoticiasEspectaculo);
 		
-		JLabel lblNewLabel_2_1_1 = new JLabel("Deportes:");
-		lblNewLabel_2_1_1.setBounds(82, 182, 78, 14);
-		frmIngresarPersonasY.getContentPane().add(lblNewLabel_2_1_1);
+		JLabel etIDeportes = new JLabel("Deportes:");
+		etIDeportes.setBounds(82, 182, 78, 14);
+		frmIngresarPersonasY.getContentPane().add(etIDeportes);
 		
-		JLabel lblNewLabel_2_1_2 = new JLabel("Ciencia:");
-		lblNewLabel_2_1_2.setBounds(82, 257, 78, 14);
-		frmIngresarPersonasY.getContentPane().add(lblNewLabel_2_1_2);
+		JLabel etICiencia = new JLabel("Ciencia:");
+		etICiencia.setBounds(82, 257, 78, 14);
+		frmIngresarPersonasY.getContentPane().add(etICiencia);
 		
 		JSpinner iDeportes = new JSpinner();
 		iDeportes.setModel(new SpinnerNumberModel(1, 1, 5, 1));
@@ -112,29 +113,42 @@ public class PantallaIngresarPersonas {
 		iCiencia.setBounds(288, 254, 41, 20);
 		frmIngresarPersonasY.getContentPane().add(iCiencia);
 		
-		JButton btnNewButton = new JButton("Iniciar agrupamiento");
-		btnNewButton.setBounds(403, 302, 143, 39);
-		frmIngresarPersonasY.getContentPane().add(btnNewButton);
+		JButton btnAgrupamiento = new JButton("Iniciar agrupamiento");
+		
+		btnAgrupamiento.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//Test
+				presenter.grafoCompleto();
+			}
+		});
+		
+		btnAgrupamiento.setBounds(403, 302, 143, 39);
+		frmIngresarPersonasY.getContentPane().add(btnAgrupamiento);
 		
 		JButton btnRegistrarPersona = new JButton("Registrar persona");
+		
 		btnRegistrarPersona.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				presenter.registrarPersona(txtNombre.getText(), (int) iDeportes.getValue(), (int) iMusica.getValue(), (int) iEspectaculo.getValue(), (int) iCiencia.getValue());
+				presenter.registrarPersona(inputNombre.getText(), (int) iDeportes.getValue(), (int) iMusica.getValue(), (int) iEspectaculo.getValue(), (int) iCiencia.getValue());
+				personasRegistradas++;
+				contPersonasRegistradas.setText(""+personasRegistradas);
 			}
 		});
+		
 		btnRegistrarPersona.setBounds(403, 195, 143, 39);
 		frmIngresarPersonasY.getContentPane().add(btnRegistrarPersona);
 		
-		JLabel lblNewLabel_3 = new JLabel("Cantidad de personas registradas:");
-		lblNewLabel_3.setBounds(57, 302, 173, 14);
-		frmIngresarPersonasY.getContentPane().add(lblNewLabel_3);
+		JLabel etCantPersonasR = new JLabel("Cantidad de personas registradas:");
+		etCantPersonasR.setBounds(57, 302, 173, 14);
+		frmIngresarPersonasY.getContentPane().add(etCantPersonasR);
 		
-		textField_1 = new JTextField();
-		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_1.setEditable(false);
-		textField_1.setBounds(250, 299, 51, 20);
-		frmIngresarPersonasY.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		contPersonasRegistradas = new JTextField();
+		contPersonasRegistradas.setHorizontalAlignment(SwingConstants.CENTER);
+		contPersonasRegistradas.setEditable(false);
+		contPersonasRegistradas.setBounds(250, 299, 51, 20);
+		frmIngresarPersonasY.getContentPane().add(contPersonasRegistradas);
+		contPersonasRegistradas.setColumns(10);
 	}
 }

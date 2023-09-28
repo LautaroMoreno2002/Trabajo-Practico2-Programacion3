@@ -11,7 +11,13 @@ public class Presenter {
 	}
 	
 	public void registrarPersona(String nombre, int iDeportes, int iMusica, int iEspectaculo, int iCiencia) {
-		int[] similaridad = {iDeportes, iMusica, iEspectaculo, iCiencia};
-		principal.registrarPersona(nombre, similaridad);
+		principal.registrarPersona(nombre, iDeportes, iMusica, iEspectaculo, iCiencia);
 	}
+
+	
+	// Test
+	public void grafoCompleto() {
+		principal.grafoCompleto();
+	}
+	
 }
