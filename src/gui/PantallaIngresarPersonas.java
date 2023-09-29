@@ -130,31 +130,34 @@ public class PantallaIngresarPersonas {
 		iCiencia.setBounds(202, 255, 40, 20);
 		frmIngresarPersonasY.getContentPane().add(iCiencia);
 		
-		JButton btnAgrupamiento = new JButton("Iniciar agrupamiento");
-		btnAgrupamiento.setBackground(new Color(0, 0, 0));
-		btnAgrupamiento.setForeground(new Color(255, 255, 255));
-		
-		btnAgrupamiento.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				//Test
-				if (personasRegistradas >= 2)
-					presenter.grafoCompleto();
-			}
-		});
-		
-		btnAgrupamiento.setBounds(391, 281, 162, 39);
-		frmIngresarPersonasY.getContentPane().add(btnAgrupamiento);
+		JLabel condicionAgrupamiento = new JLabel("");
+		condicionAgrupamiento.setForeground(Color.RED);
+		condicionAgrupamiento.setBounds(257, 321, 296, 22);
+		frmIngresarPersonasY.getContentPane().add(condicionAgrupamiento);
+
 		
 		JLabel condicionNombre = new JLabel("");
-		condicionNombre.setForeground(new Color(255, 0, 0));
+		condicionNombre.setForeground(Color.RED);
 		condicionNombre.setBounds(325, 138, 212, 14);
 		frmIngresarPersonasY.getContentPane().add(condicionNombre);
+
+		JLabel etCantPersonasR = new JLabel("Cantidad de personas registradas:");
+		etCantPersonasR.setFont(tipografia);
+		etCantPersonasR.setBounds(24, 290, 189, 30);
+		frmIngresarPersonasY.getContentPane().add(etCantPersonasR);
+		
+		contPersonasRegistradas = new JTextField();
+		contPersonasRegistradas.setColumns(10);
+		contPersonasRegistradas.setBackground(Color.WHITE);
+		contPersonasRegistradas.setHorizontalAlignment(SwingConstants.CENTER);
+		contPersonasRegistradas.setEditable(false);
+		contPersonasRegistradas.setBounds(217, 296, 51, 20);
+		frmIngresarPersonasY.getContentPane().add(contPersonasRegistradas);
 		
 		JButton btnRegistrarPersona = new JButton("Registrar persona");
-		btnRegistrarPersona.setForeground(new Color(255, 255, 255));
-		btnRegistrarPersona.setBackground(new Color(0, 0, 0));
-		
+		btnRegistrarPersona.setForeground(Color.WHITE);
+		btnRegistrarPersona.setBackground(Color.BLACK);		
+		btnRegistrarPersona.setBounds(404, 196, 143, 39);
 		btnRegistrarPersona.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -168,27 +171,30 @@ public class PantallaIngresarPersonas {
 				}
 			}
 		});
-		
-		btnRegistrarPersona.setBounds(404, 196, 143, 39);
 		frmIngresarPersonasY.getContentPane().add(btnRegistrarPersona);
 		
-		JLabel etCantPersonasR = new JLabel("Cantidad de personas registradas:");
-		etCantPersonasR.setFont(tipografia);
-		etCantPersonasR.setBounds(24, 290, 189, 30);
-		frmIngresarPersonasY.getContentPane().add(etCantPersonasR);
+		JButton btnAgrupamiento = new JButton("Iniciar agrupamiento");
+		btnAgrupamiento.setBackground(Color.BLACK);
+		btnAgrupamiento.setForeground(Color.WHITE);
+		btnAgrupamiento.setBounds(391, 281, 162, 39);
+		btnAgrupamiento.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//Test
+				if (personasRegistradas >= 2)
+					presenter.grafoCompleto();
+				else
+					condicionAgrupamiento.setText("Deben haber un mínimo de 2 personas registradas.");
+			}
+		});		
+		frmIngresarPersonasY.getContentPane().add(btnAgrupamiento);
+
 		
-		contPersonasRegistradas = new JTextField();
-		contPersonasRegistradas.setBackground(new Color(255, 255, 255));
-		contPersonasRegistradas.setHorizontalAlignment(SwingConstants.CENTER);
-		contPersonasRegistradas.setEditable(false);
-		contPersonasRegistradas.setBounds(217, 296, 51, 20);
-		frmIngresarPersonasY.getContentPane().add(contPersonasRegistradas);
-		contPersonasRegistradas.setColumns(10);
 		
 	}
 	
 	
 	private boolean validarNombre(JTextField input){
-		return input.getText().length() > 3;
+		return input.getText().length() >= 3;
 	}
 }
