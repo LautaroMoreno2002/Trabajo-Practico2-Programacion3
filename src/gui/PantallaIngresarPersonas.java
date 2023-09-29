@@ -4,15 +4,22 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextPane;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+
+import org.eclipse.swt.internal.win32.INPUT;
+
 import presenter.Presenter;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Panel;
 
 public class PantallaIngresarPersonas {
 
@@ -20,7 +27,7 @@ public class PantallaIngresarPersonas {
 	private JTextField contPersonasRegistradas;
 	private int personasRegistradas;
 	private Presenter presenter;
-
+	private final Font tipografia = new Font("Segoe UI Semibold", Font.BOLD | Font.ITALIC, 12); 
 	/**
 	 * Launch the application.
 	 */
@@ -51,11 +58,13 @@ public class PantallaIngresarPersonas {
 	 */
 	private void initialize() {
 		frmIngresarPersonasY = new JFrame();
+		frmIngresarPersonasY.getContentPane().setBackground(new Color(192, 192, 192));
 //		frmIngresarPersonasY.setIconImage(Toolkit.getDefaultToolkit().getImage(PantallaIngresarPersonas.class.getResource("/org/eclipse/jface/fieldassist/images/contassist_ovr.png")));
 		frmIngresarPersonasY.setTitle("Ingresar personas y sus interes");
 		frmIngresarPersonasY.setBounds(100, 100, 600, 400);
 		frmIngresarPersonasY.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmIngresarPersonasY.getContentPane().setLayout(null);
+		frmIngresarPersonasY.getContentPane().setForeground(null);
 		
 		JTextPane txtBienvenidoEnEste = new JTextPane();
 		txtBienvenidoEnEste.setFont(new Font("JetBrains Mono", Font.PLAIN, 12));
@@ -65,90 +74,121 @@ public class PantallaIngresarPersonas {
 		frmIngresarPersonasY.getContentPane().add(txtBienvenidoEnEste);
 		
 		JLabel etIngresarNombre = new JLabel("Ingrese el nombre de la persona: \r\n");
-		etIngresarNombre.setBounds(57, 116, 162, 22);
+		etIngresarNombre.setFont(tipografia);
+		etIngresarNombre.setBounds(24, 116, 244, 22);
 		frmIngresarPersonasY.getContentPane().add(etIngresarNombre);
 		
 		JTextField inputNombre = new JTextField();
+		inputNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		inputNombre.setBounds(337, 116, 189, 22);
+		inputNombre.setFont(tipografia);
 		frmIngresarPersonasY.getContentPane().add(inputNombre);
 		inputNombre.setColumns(10);
 		
 		JLabel etIngresarValores = new JLabel("Ingrese los valores de interés que tiene la persona:");
-		etIngresarValores.setBounds(57, 149, 259, 22);
+		etIngresarValores.setFont(tipografia);
+		etIngresarValores.setBounds(24, 149, 270, 22);
 		frmIngresarPersonasY.getContentPane().add(etIngresarValores);
 		
 		JLabel etIMusica = new JLabel("Música:");
-		etIMusica.setBounds(82, 232, 78, 14);
+		etIMusica.setBounds(44, 232, 78, 14);
+		etIMusica.setFont(tipografia);
 		frmIngresarPersonasY.getContentPane().add(etIMusica);
 		
 		JLabel etINoticiasEspectaculo = new JLabel("Noticias de espectáculo: ");
-		etINoticiasEspectaculo.setBounds(82, 207, 119, 14);
+		etINoticiasEspectaculo.setFont(tipografia);
+		etINoticiasEspectaculo.setBounds(44, 207, 148, 14);
 		frmIngresarPersonasY.getContentPane().add(etINoticiasEspectaculo);
 		
 		JLabel etIDeportes = new JLabel("Deportes:");
-		etIDeportes.setBounds(82, 182, 78, 14);
+		etIDeportes.setFont(tipografia);
+		etIDeportes.setBounds(44, 182, 78, 14);
 		frmIngresarPersonasY.getContentPane().add(etIDeportes);
 		
 		JLabel etICiencia = new JLabel("Ciencia:");
-		etICiencia.setBounds(82, 257, 78, 14);
+		etICiencia.setBounds(44, 257, 78, 14);
+		etICiencia.setFont(tipografia);
 		frmIngresarPersonasY.getContentPane().add(etICiencia);
 		
 		JSpinner iDeportes = new JSpinner();
 		iDeportes.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		iDeportes.setBounds(288, 179, 41, 20);
+		iDeportes.setBounds(202, 182, 40, 20);
 		frmIngresarPersonasY.getContentPane().add(iDeportes);
 		
 		JSpinner iEspectaculo = new JSpinner();
 		iEspectaculo.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		iEspectaculo.setBounds(288, 204, 41, 20);
+		iEspectaculo.setBounds(202, 205, 40, 20);
 		frmIngresarPersonasY.getContentPane().add(iEspectaculo);
 		
 		JSpinner iMusica = new JSpinner();
 		iMusica.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		iMusica.setBounds(288, 229, 41, 20);
+		iMusica.setBounds(202, 230, 40, 20);
 		frmIngresarPersonasY.getContentPane().add(iMusica);
 		
 		JSpinner iCiencia = new JSpinner();
 		iCiencia.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-		iCiencia.setBounds(288, 254, 41, 20);
+		iCiencia.setBounds(202, 255, 40, 20);
 		frmIngresarPersonasY.getContentPane().add(iCiencia);
 		
 		JButton btnAgrupamiento = new JButton("Iniciar agrupamiento");
+		btnAgrupamiento.setBackground(new Color(0, 0, 0));
+		btnAgrupamiento.setForeground(new Color(255, 255, 255));
 		
 		btnAgrupamiento.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//Test
-				presenter.grafoCompleto();
+				if (personasRegistradas >= 2)
+					presenter.grafoCompleto();
 			}
 		});
 		
-		btnAgrupamiento.setBounds(403, 302, 143, 39);
+		btnAgrupamiento.setBounds(391, 281, 162, 39);
 		frmIngresarPersonasY.getContentPane().add(btnAgrupamiento);
 		
+		JLabel condicionNombre = new JLabel("");
+		condicionNombre.setForeground(new Color(255, 0, 0));
+		condicionNombre.setBounds(325, 138, 212, 14);
+		frmIngresarPersonasY.getContentPane().add(condicionNombre);
+		
 		JButton btnRegistrarPersona = new JButton("Registrar persona");
+		btnRegistrarPersona.setForeground(new Color(255, 255, 255));
+		btnRegistrarPersona.setBackground(new Color(0, 0, 0));
 		
 		btnRegistrarPersona.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				presenter.registrarPersona(inputNombre.getText(), (int) iDeportes.getValue(), (int) iMusica.getValue(), (int) iEspectaculo.getValue(), (int) iCiencia.getValue());
-				personasRegistradas++;
-				contPersonasRegistradas.setText(""+personasRegistradas);
+				if (validarNombre(inputNombre)) {
+					presenter.registrarPersona(inputNombre.getText(), (int) iDeportes.getValue(), (int) iMusica.getValue(), (int) iEspectaculo.getValue(), (int) iCiencia.getValue());
+					personasRegistradas++;
+					contPersonasRegistradas.setText(""+personasRegistradas);
+				}
+				else {
+					condicionNombre.setText("El campo \"nombre\" debe estar lleno.");
+				}
 			}
 		});
 		
-		btnRegistrarPersona.setBounds(403, 195, 143, 39);
+		btnRegistrarPersona.setBounds(404, 196, 143, 39);
 		frmIngresarPersonasY.getContentPane().add(btnRegistrarPersona);
 		
 		JLabel etCantPersonasR = new JLabel("Cantidad de personas registradas:");
-		etCantPersonasR.setBounds(57, 302, 173, 14);
+		etCantPersonasR.setFont(tipografia);
+		etCantPersonasR.setBounds(24, 290, 189, 30);
 		frmIngresarPersonasY.getContentPane().add(etCantPersonasR);
 		
 		contPersonasRegistradas = new JTextField();
+		contPersonasRegistradas.setBackground(new Color(255, 255, 255));
 		contPersonasRegistradas.setHorizontalAlignment(SwingConstants.CENTER);
 		contPersonasRegistradas.setEditable(false);
-		contPersonasRegistradas.setBounds(250, 299, 51, 20);
+		contPersonasRegistradas.setBounds(217, 296, 51, 20);
 		frmIngresarPersonasY.getContentPane().add(contPersonasRegistradas);
 		contPersonasRegistradas.setColumns(10);
+		
+	}
+	
+	
+	private boolean validarNombre(JTextField input){
+		return input.getText().length() > 3;
 	}
 }

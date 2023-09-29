@@ -21,8 +21,8 @@ public class Principal {
 	}
 	
 	public void grafoCompleto() {
-		for(int i = 0; i < personas.size(); i++) {
-			for(int j = 0; j < personas.size(); j++) {
+		for (int i = 0; i < personas.size(); i++) {
+			for (int j = 0; j < personas.size(); j++) {
 				grafo.agregarArista(i, j, personas.get(i).calcularSimilitud(personas.get(j)));
 			}
 		}
