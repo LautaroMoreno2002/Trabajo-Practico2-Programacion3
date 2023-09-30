@@ -165,6 +165,7 @@ public class PantallaIngresarPersonas {
 					presenter.registrarPersona(inputNombre.getText(), (int) iDeportes.getValue(), (int) iMusica.getValue(), (int) iEspectaculo.getValue(), (int) iCiencia.getValue());
 					personasRegistradas++;
 					contPersonasRegistradas.setText(""+personasRegistradas);
+					inputNombre.setText("");
 				}
 				else {
 					condicionNombre.setText("El campo \"nombre\" debe estar lleno.");
