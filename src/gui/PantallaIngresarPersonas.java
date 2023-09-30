@@ -13,8 +13,6 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-import org.eclipse.swt.internal.win32.INPUT;
-
 import presenter.Presenter;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -164,8 +162,7 @@ public class PantallaIngresarPersonas {
 				if (validarNombre(inputNombre)) {
 					presenter.registrarPersona(inputNombre.getText(), (int) iDeportes.getValue(), (int) iMusica.getValue(), (int) iEspectaculo.getValue(), (int) iCiencia.getValue());
 					personasRegistradas++;
-					contPersonasRegistradas.setText(""+personasRegistradas);
-
+					contPersonasRegistradas.setText(""+personasRegistradas); 	
 				}
 				else {
 					condicionNombre.setText("El campo \"nombre\" debe estar lleno.");
