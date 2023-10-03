@@ -51,16 +51,16 @@ public class Grafo {
 		return null;
 	}
 	
-	public int[] aristaConPesoMinimo(int i) { 	// pregunta por la arista (i,V) y devuelve un array con el V (vecino de i) y el peso mínimo
-		int[] ret = {i,16}; // [vertice, pesoMinimo] -> 16 es un valor arbitrario
-		HashSet<Integer> conjuntoVecinos = new HashSet<Integer>(_vecinos.get(i));
-		for (int vecino : conjuntoVecinos) {
-			if (ret[1] > this.pesoEntreDosVecinos(i, vecino))
-				ret[1] = this.pesoEntreDosVecinos(i, vecino);
-				ret[0] = vecino;
-		}
-		return ret;
-	}
+//	public int[] aristaConPesoMinimo(int i) { 	// pregunta por la arista (i,V) y devuelve un array con el V (vecino de i) y el peso mínimo
+//		int[] ret = {i,16}; // [vertice, pesoMinimo] -> 16 es un valor arbitrario
+//		HashSet<Integer> conjuntoVecinos = new HashSet<Integer>(_vecinos.get(i));
+//		for (int vecino : conjuntoVecinos) {
+//			if (ret[1] > this.pesoEntreDosVecinos(i, vecino))
+//				ret[1] = this.pesoEntreDosVecinos(i, vecino);
+//				ret[0] = vecino;
+//		}
+//		return ret;
+//	}
 	
 	private void inicializarVecinos() {
 		for (int i = 0; i < _vertices; i++) {
@@ -108,6 +108,10 @@ public class Grafo {
 			System.out.println(); // Salto de línea después de imprimir los vecinos de un elemento
 		}
 	}
-
+	
+	public int cantidadVertices() {
+		return _matrizPesos.length;
+	}
+	
 }
 
