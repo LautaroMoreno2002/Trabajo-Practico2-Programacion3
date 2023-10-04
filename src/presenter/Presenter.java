@@ -1,5 +1,8 @@
 package presenter;
 
+import java.util.List;
+
+import model.Persona;
 import model.Principal;
 
 public class Presenter {
@@ -18,6 +21,15 @@ public class Presenter {
 	// Test
 	public void grafoCompleto() {
 		principal.grafoCompleto();
+	}
+	
+	public List<Persona> obtenerPersonas() { //!!
+		System.out.println(principal.getPersonas());
+		return principal.getPersonas();
+	}
+	
+	public List<String> getNombresPersonas(){
+		return principal.getNombresPersonas();
 	}
 	
 }

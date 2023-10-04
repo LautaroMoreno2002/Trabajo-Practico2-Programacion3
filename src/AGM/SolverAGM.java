@@ -1,4 +1,4 @@
-package codigo;
+package AGM;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -6,7 +6,7 @@ import java.util.HashSet;
 import model.Grafo;
 
 
-public class AGM {
+public class SolverAGM {
 	private static ArrayList<Integer> verticesAGM;
 	private static ArrayList<Integer> aristasAGM;
 	private static ArrayList<Integer> aristasCandidatas;
