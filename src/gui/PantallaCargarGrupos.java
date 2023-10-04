@@ -18,8 +18,8 @@ public class PantallaCargarGrupos {
 
 	private JFrame frmGruposDePersonas;
 	private JMapViewer plano;
-	private List<String> usersArray = new ArrayList<String>();
-	private ArrayList<Coordinate> coordinates = new ArrayList<Coordinate>();
+	private List<String> usuarios = new ArrayList<String>();
+	private ArrayList<Coordinate> coordinadas = new ArrayList<Coordinate>();
 	/**
 	 * Launch the application.
 	 */
@@ -47,7 +47,7 @@ public class PantallaCargarGrupos {
 
 	public PantallaCargarGrupos(List<String> usersArray) {
 		super();
-		this.usersArray = usersArray;
+		this.usuarios = usersArray;
 		initialize();
 	}
 
@@ -65,8 +65,8 @@ public class PantallaCargarGrupos {
 		//Nos posicionamos en el atlantico
 		frmGruposDePersonas.getContentPane().add(plano);
 		plano.setZoomControlsVisible(false);
-		Coordinate coordinate = new Coordinate(-38.990380, -30.197439);
-		plano.setDisplayPosition(coordinate, 8); //PARA CAMBIAR EL ZOOM
+		Coordinate coordinada = new Coordinate(-38.990380, -30.197439);
+		plano.setDisplayPosition(coordinada, 8); //PARA CAMBIAR EL ZOOM
 		
 		//Agregamos un marcador
 //		MapMarker marker1 = new MapMarkerDot("Acá iría el nombre", coordinate);
@@ -81,15 +81,15 @@ public class PantallaCargarGrupos {
 //		plano.addMapMarker(marker2);
 		
 		//Poligono
-		double lat = -38.990380;
-		double lon = -30.197439;
+		double latitud = -38.990380;
+		double longitud = -30.197439;
 		
-		for (int i = 0; i < usersArray.size(); i++) {
-		    Coordinate coordinatePunto = new Coordinate(lat, lon); // Crea una nueva instancia en cada iteración
-		    MapMarker marker = new MapMarkerDot(usersArray.get(i),coordinatePunto);
+		for (int i = 0; i < usuarios.size(); i++) {
+		    Coordinate coordinadasPunto = new Coordinate(latitud, longitud); // Crea una nueva instancia en cada iteración
+		    MapMarker marker = new MapMarkerDot(usuarios.get(i),coordinadasPunto);
 		    
 		    //Agregamos las coordenadas al poligono
-		    coordinates.add(coordinatePunto);
+		    coordinadas.add(coordinadasPunto);
 		    
 		    marker.getStyle().setBackColor(Color.PINK);
 		    marker.getStyle().setColor(Color.WHITE);
@@ -97,12 +97,12 @@ public class PantallaCargarGrupos {
 
 		    double deltaLat = -0.1; // Cambia las coordenadas por una cantidad diferente
 		    double deltaLon = -0.1;
-		    lat += deltaLat; // Actualiza las coordenadas para la próxima iteración
-		    lon += deltaLon;
+		    latitud += deltaLat; // Actualiza las coordenadas para la próxima iteración
+		    longitud += deltaLon;
 		    
 		    
 		}
-		MapPolygon poligono = new MapPolygonImpl(coordinates);
+		MapPolygon poligono = new MapPolygonImpl(coordinadas);
 		plano.addMapPolygon(poligono);
 	}
 	
