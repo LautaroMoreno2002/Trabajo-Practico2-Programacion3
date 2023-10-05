@@ -8,7 +8,7 @@ import model.Grafo;
 
 public class SolverAGM {
 	private static ArrayList<Integer> _verticesAGM;
-	private static ArrayList<Integer> _aristasAGM;
+	private static ArrayList<Arista> _aristasAGM;
 //	private static ArrayList<Integer> aristasCandidatas;
 //	private static ArrayList<Integer> verticesCandidatas;
 //	private static Grafo g;
@@ -83,44 +83,43 @@ public class SolverAGM {
 		esConexo(grafoCompleto);
 		if (grafoCompleto.cantidadVertices()<2) return grafoCompleto;
 		_verticesAGM = new ArrayList<Integer>();
-		_aristasAGM = new ArrayList<Integer>();
+		_aristasAGM = new ArrayList<Arista>();
 		_verticesAGM.add(0);
 		int iteraciones = 1;
 		while (iteraciones <= grafoCompleto.cantidadVertices()-1) {
 			/*elegir e = (u, v) ∈ E tal que l(e) sea mınima
 			entre las aristas que tienen un extremo
 			u ∈ VT y el otro v ∈ V \ VT*/
-			int[] e = aristaConPesoMinimo(grafoCompleto,_verticesAGM);
+			Arista e = aristaConPesoMinimo(grafoCompleto,_verticesAGM);
 			_aristasAGM.add(e); // le pasa la arista (x,y) con el peso entre ambas
-			_verticesAGM.add(e[1]);
+			_verticesAGM.add(e.getDesde());
 			iteraciones++;
 		}
-		return null;
+		return null; // retorna un nuevo grafo
 	}
 	private static void esConexo(Grafo gr) {
 		if (gr == null) throw new IllegalArgumentException("No se puede hacer un agm de un grafo nulo");
 		if (!BFS.esConexo(gr)) throw new IllegalArgumentException("No se puede hacer un agm de un grafo no conexo");
 	}
-	private static int[] aristaConPesoMinimo(Grafo grafoCompleto, ArrayList<Integer> verticesAGM) {
-		int arista[] = new int[3];
-		arista[2] = 20;
+	private static Arista aristaConPesoMinimo(Grafo grafoCompleto, ArrayList<Integer> verticesAGM) {
+		Arista arista = new Arista(0,0,20);
 		for (int vertice : verticesAGM) {
-			int[] candidatoArista = conseguirAristaMinimaEntreLosVecinosDelVertice(vertice,grafoCompleto,verticesAGM);
-			if (candidatoArista[2]<arista[2]) {
-				arista[0] = vertice;
-				arista[1] = candidatoArista[1];
-				arista[2] = candidatoArista[2];
+			Arista candidatoArista = conseguirAristaMinimaEntreLosVecinosDelVertice(vertice,grafoCompleto,verticesAGM);
+			if (candidatoArista.getPesoEntreAmbos()<arista.getPesoEntreAmbos()) {
+				arista.setDesde(vertice);
+				arista.setHasta(candidatoArista.getHasta());
+				arista.setPesoEntreAmbos(candidatoArista.getPesoEntreAmbos());;
 			}
 		}
 		return arista;
 	}
-	private static int[] conseguirAristaMinimaEntreLosVecinosDelVertice(int vertice, Grafo grafoCompleto, ArrayList<Integer> verticesAGM) {
-		int[] candidatoArista = {vertice,vertice,20};
+	private static Arista conseguirAristaMinimaEntreLosVecinosDelVertice(int vertice, Grafo grafoCompleto, ArrayList<Integer> verticesAGM) {
+		Arista candidatoArista = new Arista(vertice,vertice,20);
 		HashSet<Integer> vecinosDelVertice = grafoCompleto.vecinosDe(vertice);
 		for (int vecino : vecinosDelVertice) {
-			if (!verticesAGM.contains(vecino) && grafoCompleto.pesoEntreDosVecinos(vertice, vecino) < candidatoArista[2]) {
-				candidatoArista[1] = vecino;
-				candidatoArista[2] = grafoCompleto.pesoEntreDosVecinos(vertice, vecino);
+			if (!verticesAGM.contains(vecino) && grafoCompleto.pesoEntreDosVecinos(vertice, vecino) < candidatoArista.getPesoEntreAmbos()) {
+				candidatoArista.setHasta(vecino);
+				candidatoArista.setPesoEntreAmbos(grafoCompleto.pesoEntreDosVecinos(vertice, vecino));;
 			}
 		}
 		return candidatoArista;
