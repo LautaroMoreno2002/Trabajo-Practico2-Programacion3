@@ -29,6 +29,20 @@ public class Principal {
 		grafo.imprimirMatriz();
 		grafo.imprimirVecinos();
 	}
+
+	public List<Persona> getPersonas() {
+		return personas;
+	}
+	
+	public List<String> getNombresPersonas(){
+		List<String> nombresPersonas = new ArrayList<String>();
+		for(int i=0; i<personas.size();i++) {
+			nombresPersonas.add(personas.get(i).getNombre());
+		}
+		return nombresPersonas;
+	}
+	
+	
 	
 	
 }
