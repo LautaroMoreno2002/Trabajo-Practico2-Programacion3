@@ -30,11 +30,11 @@ public class Grafo {
 	}
 
 	public void eliminarArista(int i, int j) {
-		_matrizPesos[i][j] = _matrizPesos[j][i] = 0;
+		_matrizPesos[i][j] = _matrizPesos[j][i] = -1;
 	}
 
 	public boolean existeArista(int i, int j) {
-		return _matrizPesos[i][j]!=0;
+		return _matrizPesos[i][j]!=-1;
 	}
 
 	public int pesoEntreDosVecinos(int i, int j) {
@@ -48,17 +48,6 @@ public class Grafo {
 			return this._vecinos.get(i);
 		return null;
 	}
-	
-//	public int[] aristaConPesoMinimo(int i) { 	// pregunta por la arista (i,V) y devuelve un array con el V (vecino de i) y el peso mínimo
-//		int[] ret = {i,16}; // [vertice, pesoMinimo] -> 16 es un valor arbitrario
-//		HashSet<Integer> conjuntoVecinos = new HashSet<Integer>(_vecinos.get(i));
-//		for (int vecino : conjuntoVecinos) {
-//			if (ret[1] > this.pesoEntreDosVecinos(i, vecino))
-//				ret[1] = this.pesoEntreDosVecinos(i, vecino);
-//				ret[0] = vecino;
-//		}
-//		return ret;
-//	}
 	
 	private void inicializarVecinos() {
 		for (int i = 0; i < _vertices; i++) {

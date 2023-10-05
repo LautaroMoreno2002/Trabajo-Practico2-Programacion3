@@ -44,7 +44,7 @@ public class PantallaIngresarPersonas {
 	public PantallaIngresarPersonas() {
 		initialize();
 		_presenter = new Presenter();
-		_personasRegistradas = 0;
+		_personasRegistradas = 3;
 	}
 
 	/**

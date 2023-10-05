@@ -87,15 +87,15 @@ public class SolverAGM {
 		_verticesAGM.add(0);
 		int iteraciones = 1;
 		while (iteraciones <= grafoCompleto.cantidadVertices()-1) {
-			/*elegir e = (u, v) ∈ E tal que l(e) sea mınima
-			entre las aristas que tienen un extremo
-			u ∈ VT y el otro v ∈ V \ VT*/
 			Arista e = aristaConPesoMinimo(grafoCompleto,_verticesAGM);
+			System.out.println("Arista:" + e.getDesde() + " " +e.getHasta()+ " "+ e.getPesoEntreAmbos() + "\n");
 			_aristasAGM.add(e); // le pasa la arista (x,y) con el peso entre ambas
-			_verticesAGM.add(e.getDesde());
+			System.out.println("aristasAGM: "+_aristasAGM.toString());
+			_verticesAGM.add(e.getHasta());
+			System.out.println("verticesAGM: "+_verticesAGM.toString());
 			iteraciones++;
 		}
-		return null; // retorna un nuevo grafo
+		return construirGrafo(_verticesAGM, _aristasAGM); // retorna un nuevo grafo
 	}
 	private static void esConexo(Grafo gr) {
 		if (gr == null) throw new IllegalArgumentException("No se puede hacer un agm de un grafo nulo");
@@ -108,8 +108,9 @@ public class SolverAGM {
 			if (candidatoArista.getPesoEntreAmbos()<arista.getPesoEntreAmbos()) {
 				arista.setDesde(vertice);
 				arista.setHasta(candidatoArista.getHasta());
-				arista.setPesoEntreAmbos(candidatoArista.getPesoEntreAmbos());;
+				arista.setPesoEntreAmbos(candidatoArista.getPesoEntreAmbos());
 			}
+			System.out.println("\nDentro del for:" + "Arista:" + arista.getDesde() + " " +arista.getHasta()+ " "+ arista.getPesoEntreAmbos() );
 		}
 		return arista;
 	}
@@ -124,5 +125,12 @@ public class SolverAGM {
 		}
 		return candidatoArista;
 	}
-	
+	private static Grafo construirGrafo(ArrayList<Integer> _verticesAGM, ArrayList<Arista> _aristasAGM) {
+        Grafo gAux = new Grafo(_verticesAGM.size());
+        for(Arista arista: _aristasAGM) {
+            gAux.agregarArista(arista.getDesde(), arista.getHasta(), arista.getPesoEntreAmbos());
+           // System.out.println("Desde : "+ arista.getDesde()+ " Hasta: "+arista.getHasta() + " y peso " + arista.getPesoEntreAmbos());
+        }
+        return gAux;
+    }
 }
