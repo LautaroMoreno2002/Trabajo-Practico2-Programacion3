@@ -1,4 +1,4 @@
-package AGM;
+package agm;
 
 public class Arista {
 	private int desde;

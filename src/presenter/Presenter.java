@@ -1,7 +1,6 @@
 package presenter;
 
 import java.util.List;
-
 import model.Persona;
 import model.Principal;
 
@@ -16,7 +15,6 @@ public class Presenter {
 	public void registrarPersona(String nombre, int iDeportes, int iMusica, int iEspectaculo, int iCiencia) {
 		principal.registrarPersona(nombre, iDeportes, iMusica, iEspectaculo, iCiencia);
 	}
-
 	
 	// Test
 	public void grafoCompleto() {

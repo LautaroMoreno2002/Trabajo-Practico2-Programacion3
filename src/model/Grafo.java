@@ -15,18 +15,29 @@ public class Grafo {
 		_vertices = cantVertices;
 		_matrizPesos = new int[cantVertices][cantVertices];
 		_vecinos = new ArrayList<HashSet<Integer>>();
-
+		inicializarMatrizPesos();
 		inicializarVecinos();
+	}
+
+	private void inicializarMatrizPesos() {
+		for (int fila = 0; fila < _matrizPesos.length; fila++) {
+			for (int columna = 0; columna < _matrizPesos[fila].length; columna++) {
+				_matrizPesos[fila][columna] = -1;
+			}
+		}
+		
 	}
 
 	// Debe depender de la similitud de las personas.
 	public void agregarArista(int i, int j, int peso) {
-		_matrizPesos[i][j] = _matrizPesos[j][i] = peso;
-
-		if (i != j) 
+		if (i != j && j != i) {
 			_vecinos.get(i).add(j);
-		if (j != i) 
-			_vecinos.get(j).add(i);	
+			_vecinos.get(j).add(i);			
+		}
+		if (i == j) {
+			_matrizPesos[i][j] = _matrizPesos[j][i] = -1;
+		}
+		_matrizPesos[i][j] = _matrizPesos[j][i] = peso;
 	}
 
 	public void eliminarArista(int i, int j) {
@@ -34,13 +45,13 @@ public class Grafo {
 	}
 
 	public boolean existeArista(int i, int j) {
-		return _matrizPesos[i][j]!=-1;
+		return _matrizPesos[i][j] != -1;
 	}
 
 	public int pesoEntreDosVecinos(int i, int j) {
 		if (i!=j && existeArista(i,j)) 
 			return _matrizPesos[i][j];
-		return 0;
+		return -1;
 	}
 	
 	public HashSet<Integer> vecinosDe(int i) {

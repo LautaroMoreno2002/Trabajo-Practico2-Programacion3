@@ -1,17 +1,15 @@
-package AGM;
+package model;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import model.Grafo;
+import agm.Arista;
+import agm.BFS;
 
-
-public class SolverAGM {
+public class AGM {
 	private static ArrayList<Integer> _verticesAGM;
 	private static ArrayList<Arista> _aristasAGM;
-//	private static ArrayList<Integer> aristasCandidatas;
-//	private static ArrayList<Integer> verticesCandidatas;
-//	private static Grafo g;
+
 	/*
 	 	VT := {u} (u cualquier vertice de G)
 		ET := ∅
@@ -25,62 +23,8 @@ public class SolverAGM {
 			i := i + 1
 		retornar T = (VT , ET)
 	 */
-//	
-//	public static int[] aristaConPesoMinimo(int i) { 	// pregunta por la arista (i,V) y devuelve un array con el V (vecino de i) y el peso mínimo
-//		int[] ret = {i,16}; // [vertice, pesoMinimo] -> 16 es un valor arbitrario
-//		HashSet<Integer> conjuntoVecinos = new HashSet<Integer>(g.vecinosDe(i));
-//		for (int vecino : conjuntoVecinos) {
-//			if (!verticesAGM.contains(vecino)) {
-//				if (ret[1] > g.pesoEntreDosVecinos(i, vecino))
-//					ret[0] = vecino;
-//					ret[1] = g.pesoEntreDosVecinos(i, vecino);	
-//				}
-//				else {
-//					aristasCandidatas.add(g.pesoEntreDosVecinos(i, vecino));
-//					verticesCandidatas.add(vecino);
-//				}
-//			}
-//		return ret;
-//	}
-//	
-//	public static void esConexo(Grafo gr) {
-//		if (gr == null) {
-//			throw new IllegalArgumentException("No se puede hacer un agm de un grafo nulo");
-//		}
-//		if (!BFS.esConexo(gr)) {
-//			throw new IllegalArgumentException("No se puede hacer un agm de un grafo no conexo");
-//		}
-//	}
-//	public static Grafo prim(Grafo gr) {
-//		esConexo(gr);
-//		if (gr.cantidadVertices() <= 1) {
-//			return gr;
-//		}
-//		
-//		g = gr;
-//		verticesAGM = new ArrayList<Integer>();
-//		aristasAGM = new ArrayList<Integer>();
-//		int i = 0;
-//		verticesAGM.add(0);
-//		int[] arreglo;
-//		while (i < g.cantidadVertices()) {
-//			arreglo = aristaConPesoMinimo(i);
-//			if (!verticesAGM.contains(arreglo[0])) {
-//				aristasAGM.add(arreglo[1]);
-//				verticesAGM.add(arreglo[0]);	
-//				aristasCandidatas.remove(arreglo[1]);
-//				verticesCandidatas.remove(arreglo[0]);
-//				i++;
-//			}
-//			//int e = g.dameAristaMinima(i); // e = (i, v != de x E Vt)
-//		}
-//		return null;			
-//	}
-//	
-	
 	
 	public static Grafo prim(Grafo grafoCompleto) {
-		esConexo(grafoCompleto);
 		if (grafoCompleto.cantidadVertices()<2) return grafoCompleto;
 		_verticesAGM = new ArrayList<Integer>();
 		_aristasAGM = new ArrayList<Arista>();
@@ -95,12 +39,16 @@ public class SolverAGM {
 			System.out.println("verticesAGM: "+_verticesAGM.toString());
 			iteraciones++;
 		}
-		return construirGrafo(_verticesAGM, _aristasAGM); // retorna un nuevo grafo
+		Grafo agm = construirGrafo(_verticesAGM, _aristasAGM);
+		esConexo(agm);
+		return agm; // retorna un nuevo grafo
 	}
+	
 	private static void esConexo(Grafo gr) {
-		if (gr == null) throw new IllegalArgumentException("No se puede hacer un agm de un grafo nulo");
-		if (!BFS.esConexo(gr)) throw new IllegalArgumentException("No se puede hacer un agm de un grafo no conexo");
+		if (gr == null) throw new IllegalArgumentException("No se puede hacer un agm de un grafo nulo.");
+		if (!BFS.esConexo(gr)) throw new IllegalArgumentException("Un grafo debe ser conexo para ser un árbol.");
 	}
+	
 	private static Arista aristaConPesoMinimo(Grafo grafoCompleto, ArrayList<Integer> verticesAGM) {
 		Arista arista = new Arista(0,0,20);
 		for (int vertice : verticesAGM) {
@@ -114,6 +62,7 @@ public class SolverAGM {
 		}
 		return arista;
 	}
+	
 	private static Arista conseguirAristaMinimaEntreLosVecinosDelVertice(int vertice, Grafo grafoCompleto, ArrayList<Integer> verticesAGM) {
 		Arista candidatoArista = new Arista(vertice,vertice,20);
 		HashSet<Integer> vecinosDelVertice = grafoCompleto.vecinosDe(vertice);
@@ -125,12 +74,11 @@ public class SolverAGM {
 		}
 		return candidatoArista;
 	}
+	
 	private static Grafo construirGrafo(ArrayList<Integer> _verticesAGM, ArrayList<Arista> _aristasAGM) {
         Grafo gAux = new Grafo(_verticesAGM.size());
-        for(Arista arista: _aristasAGM) {
+        for(Arista arista: _aristasAGM) 
             gAux.agregarArista(arista.getDesde(), arista.getHasta(), arista.getPesoEntreAmbos());
-           // System.out.println("Desde : "+ arista.getDesde()+ " Hasta: "+arista.getHasta() + " y peso " + arista.getPesoEntreAmbos());
-        }
         return gAux;
     }
 }

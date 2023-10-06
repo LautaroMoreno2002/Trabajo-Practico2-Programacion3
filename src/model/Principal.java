@@ -3,9 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import AGM.SolverAGM;
-
-
 public class Principal {
 	private List<Persona> personas;
 	private Grafo grafo;
@@ -41,14 +38,17 @@ public class Principal {
 	public void grafoCompleto() {
 		for (int i = 0; i < personas.size(); i++) {
 			for (int j = 0; j < personas.size(); j++) {
-				grafo.agregarArista(i, j, personas.get(i).calcularSimilitud(personas.get(j)));
+				if (i != j)
+					grafo.agregarArista(i, j, personas.get(i).calcularSimilitud(personas.get(j)));
+				else
+					grafo.agregarArista(i, j, -1);
 			}
 		}
 		grafo.imprimirMatriz();
 		grafo.imprimirVecinos();
 		System.out.println("AGM: \n");
 
-        Grafo grafoA = SolverAGM.prim(grafo);
+        Grafo grafoA = AGM.prim(grafo);
         grafoA.imprimirMatriz();
         grafoA.imprimirVecinos();
 		
