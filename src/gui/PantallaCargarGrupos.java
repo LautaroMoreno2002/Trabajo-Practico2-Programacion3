@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JFrame;
-
 import org.openstreetmap.gui.jmapviewer.Coordinate;
 import org.openstreetmap.gui.jmapviewer.JMapViewer;
 import org.openstreetmap.gui.jmapviewer.MapMarkerDot;

@@ -1,9 +1,8 @@
-package AGM;
+package agm;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-
 import model.Grafo;
 
 public class BFS {

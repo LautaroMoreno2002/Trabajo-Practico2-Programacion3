@@ -48,7 +48,7 @@ public class PantallaIngresarPersonas {
 	public PantallaIngresarPersonas() {
 		initialize();
 		_presenter = new Presenter();
-		_personasRegistradas = 0;
+		_personasRegistradas = 3;
 	}
 
 	/**
@@ -57,7 +57,6 @@ public class PantallaIngresarPersonas {
 	private void initialize() {
 		_frmIngresarPersonas = new JFrame();
 		_frmIngresarPersonas.getContentPane().setBackground(new Color(192, 192, 192));
-//		frmIngresarPersonasY.setIconImage(Toolkit.getDefaultToolkit().getImage(PantallaIngresarPersonas.class.getResource("/org/eclipse/jface/fieldassist/images/contassist_ovr.png")));
 		_frmIngresarPersonas.setTitle("Clustering humano");
 		_frmIngresarPersonas.setBounds(100, 100, 600, 400);
 		_frmIngresarPersonas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
