@@ -51,6 +51,11 @@ public class Principal {
         Grafo grafoA = AGM.prim(grafo);
         grafoA.imprimirMatriz();
         grafoA.imprimirVecinos();
+        
+        grafoA.sacarAristaMasGrande();
+        
+        grafoA.imprimirMatriz();
+        grafoA.imprimirVecinos();
 		
 	}
 

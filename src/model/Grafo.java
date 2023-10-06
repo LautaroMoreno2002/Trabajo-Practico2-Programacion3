@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import agm.Arista;
+
 public class Grafo {
 	
 	private int _vertices;													//Sirve para saber cuantos vertices tenemos
@@ -42,6 +44,8 @@ public class Grafo {
 
 	public void eliminarArista(int i, int j) {
 		_matrizPesos[i][j] = _matrizPesos[j][i] = -1;
+		_vecinos.get(i).remove(j);
+		_vecinos.get(j).remove(i);
 	}
 
 	public boolean existeArista(int i, int j) {
@@ -109,6 +113,20 @@ public class Grafo {
 	
 	public int cantidadVertices() {
 		return _matrizPesos.length;
+	}
+
+	public void sacarAristaMasGrande() {
+		Arista candidatoArista = new Arista (0,0,0);
+		for (int fila = 0; fila < _matrizPesos.length; fila++) {
+			for (int columna = 0; columna < _matrizPesos.length; columna++) {
+				if (candidatoArista.getPesoEntreAmbos() < _matrizPesos[fila][columna]) {
+					candidatoArista.setDesde(fila);
+					candidatoArista.setHasta(columna);
+					candidatoArista.setPesoEntreAmbos(_matrizPesos[fila][columna]);
+				}
+			}
+		}
+		eliminarArista(candidatoArista.getDesde(), candidatoArista.getHasta());
 	}
 	
 }

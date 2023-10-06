@@ -40,7 +40,7 @@ public class AGM {
 			iteraciones++;
 		}
 		Grafo agm = construirGrafo(_verticesAGM, _aristasAGM);
-		esConexo(agm);
+		esConexo(agm); // Valida si el grafo es conexo
 		return agm; // retorna un nuevo grafo
 	}
 	
@@ -69,7 +69,7 @@ public class AGM {
 		for (int vecino : vecinosDelVertice) {
 			if (!verticesAGM.contains(vecino) && grafoCompleto.pesoEntreDosVecinos(vertice, vecino) < candidatoArista.getPesoEntreAmbos()) {
 				candidatoArista.setHasta(vecino);
-				candidatoArista.setPesoEntreAmbos(grafoCompleto.pesoEntreDosVecinos(vertice, vecino));;
+				candidatoArista.setPesoEntreAmbos(grafoCompleto.pesoEntreDosVecinos(vertice, vecino));
 			}
 		}
 		return candidatoArista;
@@ -77,7 +77,7 @@ public class AGM {
 	
 	private static Grafo construirGrafo(ArrayList<Integer> _verticesAGM, ArrayList<Arista> _aristasAGM) {
         Grafo gAux = new Grafo(_verticesAGM.size());
-        for(Arista arista: _aristasAGM) 
+        for (Arista arista: _aristasAGM)
             gAux.agregarArista(arista.getDesde(), arista.getHasta(), arista.getPesoEntreAmbos());
         return gAux;
     }
