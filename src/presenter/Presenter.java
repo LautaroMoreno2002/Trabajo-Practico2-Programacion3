@@ -2,14 +2,14 @@ package presenter;
 
 import java.util.List;
 import model.Persona;
-import model.Principal;
+import model.ClusteringHumano;
 
 public class Presenter {
 	
-	private Principal principal;
+	private ClusteringHumano principal;
 	
 	public Presenter() {
-		this.principal = new Principal();
+		this.principal = new ClusteringHumano();
 	}
 	
 	public void registrarPersona(String nombre, int iDeportes, int iMusica, int iEspectaculo, int iCiencia) {
@@ -17,8 +17,10 @@ public class Presenter {
 	}
 	
 	// Test
-	public void grafoCompleto() {
-		principal.grafoCompleto();
+	public void iniciarAgrupamiento() {
+		principal.construirGrafoCompleto();
+		principal.construirAGMConPrim();
+		principal.sacarAristaDeMayorPeso();
 	}
 	
 	public List<Persona> obtenerPersonas() { //!!

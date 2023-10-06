@@ -181,7 +181,7 @@ public class PantallaIngresarPersonas {
 				if (_personasRegistradas >= 2) {
 					pantallaGrupos.getFrmGruposDePersonas().setVisible(true);
 					_frmIngresarPersonas.setVisible(false);
-					_presenter.grafoCompleto();
+					_presenter.iniciarAgrupamiento();
 				}
 				else
 					condicionAgrupamiento.setText("Deben haber un mínimo de 2 personas registradas.");
@@ -190,7 +190,7 @@ public class PantallaIngresarPersonas {
 		_frmIngresarPersonas.getContentPane().add(btnAgrupamiento);
 		
 		JLabel etTitulo = new JLabel("Clustering Humano");
-		etTitulo.setBackground(new Color(255, 255, 255));
+		etTitulo.setBackground(Color.WHITE);
 		etTitulo.setFont(new Font("JetBrains Mono", Font.BOLD, 18));
 		etTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		etTitulo.setBounds(180, 11, 230, 25);
