@@ -103,7 +103,6 @@ public class PantallaCargarGrupos {
 		MapPolygon poligono = new MapPolygonImpl(coordinadas);
 		plano.addMapPolygon(poligono);
 	}
-	
 
 
 	public JFrame getFrmGruposDePersonas() {
