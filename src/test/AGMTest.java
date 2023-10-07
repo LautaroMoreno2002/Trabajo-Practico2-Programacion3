@@ -25,9 +25,27 @@ public class AGMTest {
 		g.agregarArista(0, 1, 9);
 		g.agregarArista(0, 2, 5);
 		g.agregarArista(0, 3, 2);
-		g.agregarArista(1, 2, 5);
-		g.agregarArista(1, 1, 5);
-		int[][] esperado = {{-1,3,4},{3,-1,-1},{4,-1,-1},{}};
+		g.agregarArista(1, 2, 1);
+		g.agregarArista(1, 3, 8);
+		g.agregarArista(2, 3, 3);
+		int[][] esperado = {{-1,-1,-1,2},{-1,-1,1,-1},{-1,1,-1,3},{2,-1,3,-1}};
+		Grafo gPrim = AGM.prim(g);
+		assertTrue(sonIguales(esperado,gPrim.getMatrizDePesos()));
+	}
+	@Test
+	public void matrizAGMConGrafoDeCincoVertices() {
+		Grafo g = new Grafo(5);
+		g.agregarArista(0,1,6);
+		g.agregarArista(0,2,11);
+		g.agregarArista(0,3,5);
+		g.agregarArista(0,4,14);
+		g.agregarArista(1,2,11);
+		g.agregarArista(1,3,5);
+		g.agregarArista(1,4,8);
+		g.agregarArista(2,3,10);
+		g.agregarArista(2,4,5);
+		g.agregarArista(3,4,9);
+		int[][] esperado = {{-1,-1,-1,5,-1},{-1,-1,-1,5,8},{-1,-1,-1,-1,5},{5,5,-1,-1,-1},{-1,8,5,-1,-1}};
 		Grafo gPrim = AGM.prim(g);
 		assertTrue(sonIguales(esperado,gPrim.getMatrizDePesos()));
 	}
