@@ -1,35 +1,36 @@
 package presenter;
 
 import java.util.List;
-import model.Persona;
-import model.ClusteringHumano;
+
+import modelo.ClusteringHumano;
+import modelo.Persona;
 
 public class Presenter {
 	
-	private ClusteringHumano principal;
+	private ClusteringHumano clustering;
 	
 	public Presenter() {
-		this.principal = new ClusteringHumano();
+		this.clustering = new ClusteringHumano();
 	}
 	
 	public void registrarPersona(String nombre, int iDeportes, int iMusica, int iEspectaculo, int iCiencia) {
-		principal.registrarPersona(nombre, iDeportes, iMusica, iEspectaculo, iCiencia);
+		clustering.registrarPersona(nombre, iDeportes, iMusica, iEspectaculo, iCiencia);
 	}
 	
 	// Test
 	public void iniciarAgrupamiento() {
-		principal.construirGrafoCompleto();
-		principal.construirAGMConPrim();
-		principal.sacarAristaDeMayorPeso();
+		clustering.construirGrafoCompleto();
+		clustering.construirAGMConPrim();
+		clustering.sacarAristaDeMayorPeso();
 	}
 	
 	public List<Persona> obtenerPersonas() { //!!
-		System.out.println(principal.getPersonas());
-		return principal.getPersonas();
+		System.out.println(clustering.getPersonas());
+		return clustering.getPersonas();
 	}
 	
 	public List<String> getNombresPersonas(){
-		return principal.getNombresPersonas();
+		return clustering.getNombresPersonas();
 	}
 	
 }

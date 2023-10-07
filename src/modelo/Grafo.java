@@ -1,4 +1,4 @@
-package model;
+package modelo;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -52,7 +52,7 @@ public class Grafo {
 	}
 
 	private void validarPeso(int peso) {
-		if (peso < 0) 
+		if (peso < -1) 
 			throw new IllegalArgumentException("El peso no puede ser negativo.");
 	}
 

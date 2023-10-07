@@ -1,4 +1,4 @@
-package model;
+package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,21 +13,21 @@ public class ClusteringHumano {
         personas = new ArrayList<Persona>();
         grafo = new Grafo(0);
         //test
-        Persona abel = new Persona("Abel", 4,5,1,5);
-        Persona lautaro = new Persona("Lautaro", 1,4,3,5);
-        Persona karin = new Persona("Karin", 5,2,4,1);
-        Persona lautaro2 = new Persona("Lautaro2", 3,5,5,5);
-        Persona karin2 = new Persona("Karin2", 1,2,5,1);
-        personas.add(abel);
-        grafo.agregarVertice();
-        personas.add(lautaro);
-        grafo.agregarVertice();
-        personas.add(karin);
-        grafo.agregarVertice();
-        personas.add(lautaro2);
-        grafo.agregarVertice();
-        personas.add(karin2);
-        grafo.agregarVertice();
+//        Persona abel = new Persona("Abel", 4,5,1,5);
+//        Persona lautaro = new Persona("Lautaro", 1,4,3,5);
+//        Persona karin = new Persona("Karin", 5,2,4,1);
+//        Persona lautaro2 = new Persona("Lautaro2", 3,5,5,5);
+//        Persona karin2 = new Persona("Karin2", 1,2,5,1);
+//        personas.add(abel);
+//        grafo.agregarVertice();
+//        personas.add(lautaro);
+//        grafo.agregarVertice();
+//        personas.add(karin);
+//        grafo.agregarVertice();
+//        personas.add(lautaro2);
+//        grafo.agregarVertice();
+//        personas.add(karin2);
+//        grafo.agregarVertice();
 
     }
 	
@@ -38,12 +38,12 @@ public class ClusteringHumano {
 	}
 	
 	public void construirGrafoCompleto() {
-		for (int i = 0; i < personas.size(); i++) {
-			for (int j = 0; j < personas.size(); j++) {
-				if (i != j)
-					grafo.agregarArista(i, j, personas.get(i).calcularSimilitud(personas.get(j)));
+		for (int fila = 0; fila < personas.size(); fila++) {
+			for (int columna = 0; columna < personas.size(); columna++) {
+				if (fila != columna)
+					grafo.agregarArista(fila, columna, personas.get(fila).calcularSimilitud(personas.get(columna)));
 				else
-					grafo.agregarArista(i, j, -1);
+					grafo.agregarArista(fila, columna, -1);
 			}
 		}
 		grafo.imprimirMatriz();
@@ -76,8 +76,8 @@ public class ClusteringHumano {
 	
 	public List<String> getNombresPersonas(){
 		List<String> nombresPersonas = new ArrayList<String>();
-		for(int i=0; i<personas.size();i++) {
-			nombresPersonas.add(personas.get(i).getNombre());
+		for(int fila = 0; fila < personas.size(); fila++) {
+			nombresPersonas.add(personas.get(fila).getNombre());
 		}
 		return nombresPersonas;
 	}

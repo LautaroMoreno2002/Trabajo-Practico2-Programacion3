@@ -3,7 +3,8 @@ package agm;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import model.Grafo;
+
+import modelo.Grafo;
 
 public class BFS {
 	
