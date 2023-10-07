@@ -1,10 +1,9 @@
-package model;
+package agm;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import agm.Arista;
-import agm.BFS;
+import model.Grafo;
 
 public class AGM {
 	private static ArrayList<Integer> _verticesAGM;
@@ -26,6 +25,7 @@ public class AGM {
 	
 	public static Grafo prim(Grafo grafoCompleto) {
 		if (grafoCompleto.cantidadVertices()<2) return grafoCompleto;
+		
 		_verticesAGM = new ArrayList<Integer>();
 		_aristasAGM = new ArrayList<Arista>();
 		_verticesAGM.add(0);
@@ -65,7 +65,7 @@ public class AGM {
 	
 	private static Arista conseguirAristaMinimaEntreLosVecinosDelVertice(int vertice, Grafo grafoCompleto, ArrayList<Integer> verticesAGM) {
 		Arista candidatoArista = new Arista(vertice,vertice,20);
-		HashSet<Integer> vecinosDelVertice = grafoCompleto.vecinosDe(vertice);
+		HashSet<Integer> vecinosDelVertice = grafoCompleto.vecinosDelVertice(vertice);
 		for (int vecino : vecinosDelVertice) {
 			if (!verticesAGM.contains(vecino) && grafoCompleto.pesoEntreDosVecinos(vertice, vecino) < candidatoArista.getPesoEntreAmbos()) {
 				candidatoArista.setHasta(vecino);

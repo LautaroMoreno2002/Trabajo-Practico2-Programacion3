@@ -3,11 +3,13 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Principal {
+import agm.AGM;
+
+public class ClusteringHumano {
 	private List<Persona> personas;
 	private Grafo grafo;
 	
-	public Principal() {
+	public ClusteringHumano() {
         personas = new ArrayList<Persona>();
         grafo = new Grafo(0);
         //test
@@ -35,7 +37,7 @@ public class Principal {
 		grafo.agregarVertice();
 	}
 	
-	public void grafoCompleto() {
+	public void construirGrafoCompleto() {
 		for (int i = 0; i < personas.size(); i++) {
 			for (int j = 0; j < personas.size(); j++) {
 				if (i != j)
@@ -46,19 +48,28 @@ public class Principal {
 		}
 		grafo.imprimirMatriz();
 		grafo.imprimirVecinos();
-		System.out.println("AGM: \n");
-
-        Grafo grafoA = AGM.prim(grafo);
-        grafoA.imprimirMatriz();
-        grafoA.imprimirVecinos();
-        
-        grafoA.sacarAristaMasGrande();
-        
-        grafoA.imprimirMatriz();
-        grafoA.imprimirVecinos();
-		
 	}
-
+//		System.out.println("AGM: \n");
+//        Grafo grafoA = AGM.prim(grafo);
+//        grafoA.imprimirMatriz();
+//        grafoA.imprimirVecinos();
+//        
+//        grafoA.sacarAristaMasGrande();
+//        
+//        grafoA.imprimirMatriz();
+//        grafoA.imprimirVecinos();
+		
+	public void construirAGMConPrim() {
+		Grafo grafoAGM = AGM.prim(grafo);
+		grafo = grafoAGM;
+		grafo.imprimirMatriz();
+		grafo.imprimirVecinos();
+	}
+	public void sacarAristaDeMayorPeso() {
+		grafo.sacarAristaMasGrande();
+		grafo.imprimirMatriz();
+		grafo.imprimirVecinos();
+	}
 	public List<Persona> getPersonas() {
 		return personas;
 	}
