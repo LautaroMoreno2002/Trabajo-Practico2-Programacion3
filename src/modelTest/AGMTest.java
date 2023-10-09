@@ -1,12 +1,10 @@
-package test;
+package modelTest;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.*;
-
-import agm.AGM;
-import modelo.Grafo;
+import org.junit.Test;
+import algoritmoAGM.AGM;
+import model.Grafo;
 
 public class AGMTest {
 	@Test

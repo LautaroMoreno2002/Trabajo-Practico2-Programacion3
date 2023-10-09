@@ -1,16 +1,17 @@
-package test;
+package modelTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-
 import java.util.HashSet;
 import java.util.Set;
 import org.junit.Test;
-import modelo.Grafo;
+
+import model.Grafo;
 
 public class GrafoTest {
+
 	@Test
 	public void inicializarGrafoVacio() {
 		Grafo g = new Grafo(0);
@@ -19,6 +20,7 @@ public class GrafoTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void iniciarGrafoConCantidadVerticesNegativa() {
 		Grafo g = new Grafo(-4);
+		g.agregarArista(0, 0, 0);
 	}
 	@Test
 	public void inicializarGrafoConVertices() {

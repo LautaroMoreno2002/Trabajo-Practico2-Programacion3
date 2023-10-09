@@ -1,9 +1,8 @@
-package modelo;
+package model;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-
-import agm.Arista;
+import algoritmoAGM.Arista;
 
 public class Grafo {
 	
@@ -29,6 +28,11 @@ public class Grafo {
 			}
 		}
 		
+	}
+	
+	public boolean sonVecinos(int verticeA, int verticeB) {
+		validarIndices(verticeA, verticeB);
+		return _matrizPesos[verticeA][verticeB] != -1;
 	}
 
 	// Debe depender de la similitud de las personas.
@@ -150,5 +154,9 @@ public class Grafo {
 	
 	public int[][] getMatrizDePesos(){
 		return _matrizPesos;
+	}
+	
+	public ArrayList<HashSet<Integer>> get_vecinos() {
+		return _vecinos;
 	}
 }

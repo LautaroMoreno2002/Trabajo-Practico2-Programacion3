@@ -1,4 +1,4 @@
-package gui;
+package view;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -177,14 +177,14 @@ public class PantallaIngresarPersonas {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//Test
-				if (_personasRegistradas >= 2) {
-					PantallaCargarGrupos pantallaGrupos = new PantallaCargarGrupos(_presenter.getNombresPersonas());
-					pantallaGrupos.getFrmGruposDePersonas().setVisible(true);
-					_frmIngresarPersonas.setVisible(false);
+				if (_personasRegistradas > 2) {
 					_presenter.iniciarAgrupamiento();
+					PantallaCargarGrupos pantallaGrupos = new PantallaCargarGrupos(_presenter.getNombresPersonas(),_presenter.getArrayVecinos());
+					pantallaGrupos.getFrmGruposDePersonas().setVisible(true);
+					//_frmIngresarPersonas.dispose();
 				}
 				else
-					condicionAgrupamiento.setText("Deben haber un mínimo de 2 personas registradas.");
+					condicionAgrupamiento.setText("Deben haber un mínimo de 3 personas registradas.");
 			}
 		});
 		_frmIngresarPersonas.getContentPane().add(btnAgrupamiento);
