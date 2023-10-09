@@ -1,14 +1,14 @@
 package test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.HashSet;
 import java.util.Set;
 import org.junit.Test;
-import model.Grafo;
+import modelo.Grafo;
 
 public class GrafoTest {
 	@Test
@@ -45,6 +45,12 @@ public class GrafoTest {
 		Grafo g = new Grafo(3);
 		g.agregarArista(1, 2, 3);
 		assertTrue(g.existeArista(1, 2));
+	}
+	@Test
+	public void comprobarExistenciaCuandoNoHayArista() {
+		Grafo g = new Grafo(2);
+		g.agregarArista(0, 1, -1);
+		assertFalse(g.existeArista(0, 1));
 	}
 	@Test
 	public void agregarVerticeAlGrafo() {

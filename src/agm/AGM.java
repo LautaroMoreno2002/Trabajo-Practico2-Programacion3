@@ -3,7 +3,7 @@ package agm;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import model.Grafo;
+import modelo.Grafo;
 
 public class AGM {
 	private static ArrayList<Integer> _verticesAGM;

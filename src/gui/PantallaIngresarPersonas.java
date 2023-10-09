@@ -48,7 +48,7 @@ public class PantallaIngresarPersonas {
 	public PantallaIngresarPersonas() {
 		initialize();
 		_presenter = new Presenter();
-		_personasRegistradas = 3;
+		_personasRegistradas = 0;
 	}
 
 	/**
@@ -180,9 +180,9 @@ public class PantallaIngresarPersonas {
 		btnAgrupamiento.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PantallaCargarGrupos pantallaGrupos = new PantallaCargarGrupos(_presenter.getNombresPersonas());
 				//Test
 				if (_personasRegistradas >= 2) {
+					PantallaCargarGrupos pantallaGrupos = new PantallaCargarGrupos(_presenter.getNombresPersonas());
 					pantallaGrupos.getFrmGruposDePersonas().setVisible(true);
 					_frmIngresarPersonas.setVisible(false);
 					_presenter.iniciarAgrupamiento();
@@ -190,7 +190,7 @@ public class PantallaIngresarPersonas {
 				else
 					condicionAgrupamiento.setText("Deben haber un mínimo de 2 personas registradas.");
 			}
-		});		
+		});
 		_frmIngresarPersonas.getContentPane().add(btnAgrupamiento);
 		
 		JLabel etTitulo = new JLabel("Clustering Humano");
