@@ -38,23 +38,20 @@ public class PantallaIngresarPersonas {
 			public void run() {
 				try {
 					PantallaIngresarPersonas window = new PantallaIngresarPersonas();
-					window._frmIngresarPersonas.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-
 	/**
 	 * Create the application.
 	 */
 	public PantallaIngresarPersonas() {
-		initialize();
 		_presenter = new Presenter();
 		_personasRegistradas = 0;
+		initialize();
 	}
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -136,7 +133,6 @@ public class PantallaIngresarPersonas {
 		condicionAgrupamiento.setBounds(278, 321, 296, 22);
 		_frmIngresarPersonas.getContentPane().add(condicionAgrupamiento);
 
-		
 		JLabel condicionNombre = new JLabel("");
 		condicionNombre.setForeground(Color.RED);
 		condicionNombre.setBounds(331, 170, 212, 14);
@@ -207,21 +203,18 @@ public class PantallaIngresarPersonas {
 		etTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		etTitulo.setBounds(180, 11, 230, 25);
 		_frmIngresarPersonas.getContentPane().add(etTitulo);
-
+		_frmIngresarPersonas.setVisible(true);
 	}
-	 
+	
 	public JFrame get_frmIngresarPersonas() {
 		return _frmIngresarPersonas;
 	}
-
 	public void set_frmIngresarPersonas(JFrame _frmIngresarPersonas) {
 		this._frmIngresarPersonas = _frmIngresarPersonas;
 	}
-	
 	private PantallaIngresarPersonas getPantalla() {
         return this;
     }
-	
 	private boolean validarNombre(JTextField input){
 		return input.getText().length() >= 3;
 	}

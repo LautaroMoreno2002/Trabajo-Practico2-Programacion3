@@ -48,7 +48,6 @@ public class PantallaCargarGrupos {
 		this.promedioCiencia = promedioCiencia;
 		initialize();
 	}
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -57,48 +56,47 @@ public class PantallaCargarGrupos {
 		frmGruposDePersonas.setTitle("Grupos de personas similares");
 		frmGruposDePersonas.setBounds(100, 100, 600, 400);
 		frmGruposDePersonas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
+
 		plano = new JMapViewer();
-		
 		JPanel panelMapa = new JPanel();
 		panelMapa.setBounds(0, 0, 398, 363);
-		
-		
 		frmGruposDePersonas.getContentPane().add(panelMapa);
 		frmGruposDePersonas.getContentPane().setLayout(null);
-		
 		//Nos posicionamos en el atlantico
 		panelMapa.add(plano); //
 		plano.setZoomControlsVisible(false);
 		
-		JLabel lblNewLabel = new JLabel("Promedios de interés de cada tema:");
-		lblNewLabel.setFont(tipografiaEtiqueta);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(396, 10, 190, 44);
-		frmGruposDePersonas.getContentPane().add(lblNewLabel);
+		JLabel etPromedio = new JLabel("Promedios de interés de cada tema:");
+		etPromedio.setFont(tipografiaEtiqueta);
+		etPromedio.setHorizontalAlignment(SwingConstants.CENTER);
+		etPromedio.setBounds(395, 10, 191, 44);
+		frmGruposDePersonas.getContentPane().add(etPromedio);
 		
-		JLabel lblNewLabel_1 = new JLabel("- Deporte:");
-		lblNewLabel_1.setFont(tipografiaEtiqueta);
-		lblNewLabel_1.setBounds(408, 53, 64, 29);
-		frmGruposDePersonas.getContentPane().add(lblNewLabel_1);
+		JLabel etPromedioDeporte = new JLabel("- Deporte:");
+		etPromedioDeporte.setFont(tipografiaEtiqueta);
+		etPromedioDeporte.setBounds(408, 53, 64, 29);
+		frmGruposDePersonas.getContentPane().add(etPromedioDeporte);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("- Espectáculo:");
-		lblNewLabel_1_1.setFont(tipografiaEtiqueta);
-		lblNewLabel_1_1.setBounds(408, 131, 87, 29);
-		frmGruposDePersonas.getContentPane().add(lblNewLabel_1_1);
+		JLabel etInteresEspectaculo = new JLabel("- Espectáculo:");
+		etInteresEspectaculo.setFont(tipografiaEtiqueta);
+		etInteresEspectaculo.setBounds(408, 131, 87, 29);
+		frmGruposDePersonas.getContentPane().add(etInteresEspectaculo);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("- Música:");
-		lblNewLabel_1_1_1.setFont(tipografiaEtiqueta);
-		lblNewLabel_1_1_1.setBounds(408, 92, 64, 29);
-		frmGruposDePersonas.getContentPane().add(lblNewLabel_1_1_1);
+		JLabel etPromedioMusica = new JLabel("- Música:");
+		etPromedioMusica.setFont(tipografiaEtiqueta);
+		etPromedioMusica.setBounds(408, 92, 64, 29);
+		frmGruposDePersonas.getContentPane().add(etPromedioMusica);
 		
-		JLabel lblNewLabel_1_1_2 = new JLabel("- Ciencia:");
-		lblNewLabel_1_1_2.setFont(tipografiaEtiqueta);
-		lblNewLabel_1_1_2.setBounds(408, 172, 87, 29);
-		frmGruposDePersonas.getContentPane().add(lblNewLabel_1_1_2);
+		JLabel etPromedioCiencia = new JLabel("- Ciencia:");
+		etPromedioCiencia.setFont(tipografiaEtiqueta);
+		etPromedioCiencia.setBounds(408, 172, 87, 29);
+		frmGruposDePersonas.getContentPane().add(etPromedioCiencia);
 		
 		JButton btnNuevoAgrupamiento = new JButton("Nuevo agrupamiento");
+		btnNuevoAgrupamiento.setFont(tipografiaBoton);
+		btnNuevoAgrupamiento.setBounds(424, 258, 150, 40);
+		btnNuevoAgrupamiento.setBackground(Color.BLACK);
+		btnNuevoAgrupamiento.setForeground(Color.WHITE);
 		btnNuevoAgrupamiento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmGruposDePersonas.setVisible(false);
@@ -106,77 +104,63 @@ public class PantallaCargarGrupos {
 				pantallaIngresarPersonas.get_frmIngresarPersonas().setVisible(true);
 			}
 		});
-		btnNuevoAgrupamiento.setFont(tipografiaBoton);
-		btnNuevoAgrupamiento.setBounds(424, 280, 150, 30);
 		frmGruposDePersonas.getContentPane().add(btnNuevoAgrupamiento);
 		
 		JButton btnAgregarPersona = new JButton("Agregar persona");
+		btnAgregarPersona.setFont(tipografiaBoton);
+		btnAgregarPersona.setBounds(424, 309, 150, 40);
+		btnAgregarPersona.setBackground(Color.BLACK);
+		btnAgregarPersona.setForeground(Color.WHITE);
         btnAgregarPersona.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
                 abrirPantallaPersonas();
             }
-
             private void abrirPantallaPersonas() {
                 frmGruposDePersonas.setVisible(false);
                 _pantallaPersonas.get_frmIngresarPersonas().setVisible(true);
-
             }
         });
-		btnAgregarPersona.setFont(tipografiaBoton);
-		btnAgregarPersona.setBounds(424, 319, 150, 30);
 		frmGruposDePersonas.getContentPane().add(btnAgregarPersona);
 		
-		JLabel deporteGrupo2 = new JLabel(promedioDeporte.toString());
-		deporteGrupo2.setFont(new Font("Arial", Font.BOLD, 12));
-		deporteGrupo2.setBounds(531, 54, 41, 29);
-		frmGruposDePersonas.getContentPane().add(deporteGrupo2);
+		JLabel deporteGrupo = new JLabel(promedioDeporte.toString());
+		deporteGrupo.setFont(new Font("Arial", Font.BOLD, 12));
+		deporteGrupo.setBounds(531, 54, 41, 29);
+		frmGruposDePersonas.getContentPane().add(deporteGrupo);
 		
-		JLabel MusicaGrupo2 = new JLabel(promedioMusica.toString());
-		MusicaGrupo2.setFont(new Font("Arial", Font.BOLD, 12));
-		MusicaGrupo2.setBounds(531, 93, 41, 29);
-		frmGruposDePersonas.getContentPane().add(MusicaGrupo2);
+		JLabel MusicaGrupo = new JLabel(promedioMusica.toString());
+		MusicaGrupo.setFont(new Font("Arial", Font.BOLD, 12));
+		MusicaGrupo.setBounds(531, 93, 41, 29);
+		frmGruposDePersonas.getContentPane().add(MusicaGrupo);
 		
-		JLabel espectaculoGrupo2 = new JLabel(promedioEspectaculo.toString());
-		espectaculoGrupo2.setFont(new Font("Arial", Font.BOLD, 12));
-		espectaculoGrupo2.setBounds(531, 132, 41, 29);
-		frmGruposDePersonas.getContentPane().add(espectaculoGrupo2);
+		JLabel espectaculoGrupo = new JLabel(promedioEspectaculo.toString());
+		espectaculoGrupo.setFont(new Font("Arial", Font.BOLD, 12));
+		espectaculoGrupo.setBounds(531, 132, 41, 29);
+		frmGruposDePersonas.getContentPane().add(espectaculoGrupo);
 		
-		JLabel cienciaGrupo2 = new JLabel(promedioCiencia.toString());
-		cienciaGrupo2.setFont(new Font("Arial", Font.BOLD, 12));
-		cienciaGrupo2.setBounds(533, 173, 41, 29);
-		frmGruposDePersonas.getContentPane().add(cienciaGrupo2);
+		JLabel cienciaGrupo = new JLabel(promedioCiencia.toString());
+		cienciaGrupo.setFont(new Font("Arial", Font.BOLD, 12));
+		cienciaGrupo.setBounds(533, 173, 41, 29);
+		frmGruposDePersonas.getContentPane().add(cienciaGrupo);
 		
-
 		Coordinate coordinada = new Coordinate(-39.4, -30.19);
 		plano.setDisplayPosition(coordinada, 8); //PARA CAMBIAR EL ZOOM
-		
 		//Poligono
-		
 		double latitud = -38.990380;
 		double longitud = -30.197439;
 		double cont= 0.0;
-		
-		
 		for (int i = 0; i < _usuarios.size(); i++) {
-			
 			crearNuevoPuntoEnElPlano(latitud,longitud,i);
-
 		    double deltaLat = -0.1;
 		    double deltaLon = -0.2;
-		    
-		    if(i%2==0||i==1) {
+		    if (i % 2 == 0 || i == 1) {
 			    latitud += deltaLat;
 			    longitud += deltaLon+cont;
-		    } else if(i%2!=0) {
+		    } else if (i % 2 != 0) {
 			    latitud += deltaLat;
 			    longitud -= deltaLon+cont;
 		    }
-		    
 		    cont+=0.2;
 		}
-		
-
 		for (int vertice = 0; vertice < _vecinos.size(); vertice++) {
 			ArrayList<Coordinate> coordinates = armarArregloConVecinosDelVertice(vertice);
 			crearArista(coordinates, vertice);
@@ -186,25 +170,16 @@ public class PantallaCargarGrupos {
 	public JFrame getFrmGruposDePersonas() {
 		return frmGruposDePersonas;
 	}
-	
-	//FUNCIONES AUXILIARES!!!!!!!!!!!
-	
 	private void crearNuevoPuntoEnElPlano(double latitud, double longitud, int i) {
 	    Coordinate coordinadasPunto = new Coordinate(latitud, longitud); // Crea una nueva instancia en cada iteración
-	    
 	    MapMarker marker = new MapMarkerDot(_usuarios.get(i),coordinadasPunto);
-	    
-	    
 	    //Agregamos las coordenadasConIndice al poligono
 	    coordenadasConIndice.put(coordinadasPunto,i);
 	    coordinadas.add(coordinadasPunto);
-	    
 	    marker.getStyle().setBackColor(Color.PINK);
 	    marker.getStyle().setColor(Color.WHITE);
 	    plano.addMapMarker(marker);
 	}
-	
-	
 	private void crearArista(ArrayList<Coordinate> coordinates, int vertice) {
 		for (int i = 0; i < coordinates.size(); i += 2) {
 			if (i + 1 < coordinates.size()) {
@@ -213,12 +188,9 @@ public class PantallaCargarGrupos {
 			}
 		}
 	}
-	
 	private ArrayList<Coordinate> armarArregloConVecinosDelVertice(int vertice) {
 		ArrayList<Coordinate> coordinates = new ArrayList<Coordinate>(); //Para guardar las coordenadasConIndice de cada vecino
-		
 		HashSet<Integer> vecinosDeI = _vecinos.get(vertice);
-		
 		for (int vecino : vecinosDeI) {
 			// Para cada vecino en vecinosDeI, intenta encontrar la coordenada correspondiente en el HashMap coordenadasConIndice
 		    for (Map.Entry<Coordinate, Integer> entry : coordenadasConIndice.entrySet()) {
@@ -228,11 +200,7 @@ public class PantallaCargarGrupos {
 		        }
 		    }
 		}
-		
 		coordinates.add(coordinadas.get(vertice)); //agregamos la coordenada del vertice en el que nos paramos al array de las coordenadasConIndice de los vecinos
-		
 		return coordinates;
 	}
-	
 }
-
