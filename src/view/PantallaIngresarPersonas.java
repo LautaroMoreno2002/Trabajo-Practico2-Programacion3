@@ -10,10 +10,6 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
-<<<<<<< HEAD
-
-=======
->>>>>>> caca78572aa3f79b163e21fb3160de87ec1f967a
 import presenter.Presenter;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -38,6 +34,7 @@ public class PantallaIngresarPersonas {
 			public void run() {
 				try {
 					PantallaIngresarPersonas window = new PantallaIngresarPersonas();
+					window.get_frmIngresarPersonas().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
