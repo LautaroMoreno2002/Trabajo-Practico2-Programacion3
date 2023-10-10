@@ -56,7 +56,6 @@ public class AGMTest {
 		Grafo gPrim = AGM.prim(g);
 		assertFalse(sonIguales(g.getMatrizDePesos(),gPrim.getMatrizDePesos()));
 	}
-	
 	private static boolean sonIguales(int[][] matriz1, int[][] matriz2) {
 		boolean ret = true;
 		if (matriz1.length != matriz2.length) return ret;

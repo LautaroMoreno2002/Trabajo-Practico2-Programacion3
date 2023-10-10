@@ -46,7 +46,6 @@ public class ClusteringHumanoTest {
 		int[][] matrizEsperada = {{-1,-1,-1},{-1,-1,4},{-1,4,-1}};
 		assertTrue(sonIguales(matrizAGM, matrizEsperada));
 	}
-	
 	private ClusteringHumano inicializarYConstruirGrafoCompleto() {
 		ClusteringHumano ch = new ClusteringHumano();
 		ch.registrarPersona("Lautaro", 2, 1, 5, 3);
@@ -55,7 +54,6 @@ public class ClusteringHumanoTest {
 		ch.construirGrafoCompleto();
 		return ch;
 	}
-	
 	private boolean sonIguales(int[][] matriz1, int[][] matriz2) {
 		boolean ret = false;
 		if (matriz1.length != matriz2.length) return ret;
@@ -64,7 +62,6 @@ public class ClusteringHumanoTest {
 				ret = ret || (matriz1[i][j] == matriz2[i][j]);
 		return ret;
 	}
-	
 	private boolean todosEstanContenidos(Set<Integer> g, int p, int q) {
 		return 	g.contains(p) && g.contains(q);	
 	}

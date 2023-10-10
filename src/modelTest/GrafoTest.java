@@ -11,7 +11,6 @@ import org.junit.Test;
 import model.Grafo;
 
 public class GrafoTest {
-
 	@Test
 	public void inicializarGrafoVacio() {
 		Grafo g = new Grafo(0);
@@ -111,7 +110,6 @@ public class GrafoTest {
 		String listaPostEliminacion = g.vecinosDelVertice(0).toString();
 		assertNotEquals(listaPreEliminacion, listaPostEliminacion);
 	}
-	
 	private boolean sonIguales(int[][] matriz1, int[][] matriz2) {
 		boolean ret = false;
 		if (matriz1.length != matriz2.length) return ret;
@@ -122,5 +120,4 @@ public class GrafoTest {
 		}
 		return ret;
 	}
-	
 }
