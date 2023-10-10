@@ -43,6 +43,37 @@ public class ClusteringHumano {
 		_grafo.imprimirMatriz();
 		_grafo.imprimirVecinos();
 	}
+	public Double calcularSimilaridadPromedioDeporte(){
+		Double contador = 0.0;
+		for(Persona persona: _personas) {
+			contador+=persona.getiDeportes();
+		}
+		return contador/ _personas.size();
+	}
+	
+	public Double calcularSimilaridadPromedioMusica(){
+		Double contador = 0.0;
+		for(Persona persona: _personas) {
+			contador+=persona.getiMusica();
+		}
+		return contador/ _personas.size();
+	}
+	
+	public Double calcularSimilaridadPromedioEspectaculo(){
+		Double contador = 0.0;
+		for(Persona persona: _personas) {
+			contador+=persona.getiEspectaculo();
+		}
+		return contador/ _personas.size();
+	}
+	
+	public Double calcularSimilaridadPromedioCiencia(){
+		Double contador = 0.0;
+		for(Persona persona: _personas) {
+			contador+=persona.getiCiencia();
+		}
+		return contador/ _personas.size();
+	}
 	public List<Persona> getPersonas() {
 		return _personas;
 	}

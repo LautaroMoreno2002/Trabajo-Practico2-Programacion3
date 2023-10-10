@@ -40,11 +40,27 @@ public class Presenter {
 		return _clustering.getGrafo();
 	}
 	
-	public boolean sonVecinos(int verticeA, int verticeB) { //Karin
+	public boolean sonVecinos(int verticeA, int verticeB) {
 	    return _clustering.getGrafo().sonVecinos(verticeA, verticeB);
 	}
 	
 	public ArrayList<HashSet<Integer>> getArrayVecinos(){
 		return _clustering.getGrafo().get_vecinos();
 	}
+	
+	public Double getPromedioDeporte() {
+		return _clustering.calcularSimilaridadPromedioDeporte();
+	}
+	
+	public Double getPromedioMusica() {
+		return _clustering.calcularSimilaridadPromedioMusica();
+	}
+	
+	public Double getPromedioEspectaculo() {
+		return _clustering.calcularSimilaridadPromedioEspectaculo();
+	}
+	
+	public Double getPromedioCiencia() {
+		return _clustering.calcularSimilaridadPromedioCiencia();
+	}	
 }

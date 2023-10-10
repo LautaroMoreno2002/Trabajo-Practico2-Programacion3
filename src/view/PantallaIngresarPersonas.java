@@ -13,6 +13,9 @@ import javax.swing.SwingConstants;
 import presenter.Presenter;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.awt.Color;
 
 public class PantallaIngresarPersonas {
@@ -21,6 +24,7 @@ public class PantallaIngresarPersonas {
 	private JTextField _contPersonasRegistradas;
 	private int _personasRegistradas;
 	private Presenter _presenter;
+	private PantallaCargarGrupos pantallaGrupos;
 	private final Font _tipografia = new Font("Segoe UI Semibold", Font.BOLD | Font.ITALIC, 12); 
 	/**
 	 * Launch the application.
@@ -177,15 +181,19 @@ public class PantallaIngresarPersonas {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//Test
-				if (_personasRegistradas > 2) {
-					_presenter.iniciarAgrupamiento();
-					PantallaCargarGrupos pantallaGrupos = new PantallaCargarGrupos(_presenter.getNombresPersonas(),_presenter.getArrayVecinos());
-					pantallaGrupos.getFrmGruposDePersonas().setVisible(true);
-					//_frmIngresarPersonas.dispose();
-				}
-				else
-					condicionAgrupamiento.setText("Deben haber un mínimo de 3 personas registradas.");
-			}
+                if (_personasRegistradas > 2) {
+                    _frmIngresarPersonas.setVisible(false);
+                    _presenter.iniciarAgrupamiento();
+                    abrirPantallaGrupo(_presenter.getNombresPersonas(),_presenter.getArrayVecinos(),_presenter.getPromedioDeporte(), _presenter.getPromedioMusica(),_presenter.getPromedioEspectaculo(),_presenter.getPromedioMusica(), getPantalla());
+                }
+                else
+                    condicionAgrupamiento.setText("Deben haber un mínimo de 3 personas registradas.");
+            }
+			private void abrirPantallaGrupo(List<String> nombresPersonas, ArrayList<HashSet<Integer>> arrayVecinos,
+                    Double promedioDeporte, Double promedioMusica, Double promedioEspectaculo, Double promedioCiencia, PantallaIngresarPersonas pantallaPersonas) {
+                pantallaGrupos = new PantallaCargarGrupos(nombresPersonas, arrayVecinos, promedioDeporte, promedioMusica, promedioEspectaculo, promedioCiencia, getPantalla());
+                pantallaGrupos.getFrmGruposDePersonas().setVisible(true);
+            }
 		});
 		_frmIngresarPersonas.getContentPane().add(btnAgrupamiento);
 		
@@ -196,10 +204,19 @@ public class PantallaIngresarPersonas {
 		etTitulo.setBounds(180, 11, 230, 25);
 		_frmIngresarPersonas.getContentPane().add(etTitulo);
 
-		
-		
+	}
+	 
+	public JFrame get_frmIngresarPersonas() {
+		return _frmIngresarPersonas;
+	}
+
+	public void set_frmIngresarPersonas(JFrame _frmIngresarPersonas) {
+		this._frmIngresarPersonas = _frmIngresarPersonas;
 	}
 	
+	private PantallaIngresarPersonas getPantalla() {
+        return this;
+    }
 	
 	private boolean validarNombre(JTextField input){
 		return input.getText().length() >= 3;
