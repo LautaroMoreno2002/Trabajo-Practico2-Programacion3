@@ -1,9 +1,8 @@
-package agm;
+package algoritmoAGM;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-
-import modelo.Grafo;
+import model.Grafo;
 
 public class AGM {
 	private static ArrayList<Integer> _verticesAGM;
